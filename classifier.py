@@ -12,6 +12,9 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, confusion_matrix
 import joblib
 from pathlib import Path
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 class GNSSClassifier:
@@ -98,27 +101,104 @@ class GNSSClassifier:
 
         Returns:
             Dict: Training metrics
+
+        Raises:
+            ValueError: If input data is invalid
+            RuntimeError: If training fails
         """
-        # Scale features
-        X_scaled = self.scaler.fit_transform(X)
+        # Input validation
+        if not isinstance(X, pd.DataFrame):
+            raise ValueError("Training features (X) must be a pandas DataFrame")
+        if not isinstance(y, pd.Series):
+            raise ValueError("Training labels (y) must be a pandas Series")
         
-        # Train the model
-        self.model.fit(X_scaled, y)
-        self.is_trained = True
+        # Check for empty data
+        if len(X) == 0:
+            raise ValueError("Training features (X) is empty")
+        if len(y) == 0:
+            raise ValueError("Training labels (y) is empty")
+        
+        # Check for mismatched dimensions
+        if len(X) != len(y):
+            raise ValueError(f"Mismatched dimensions: X has {len(X)} samples but y has {len(y)} samples")
 
-        # Calculate training metrics
-        train_metrics = self._calculate_metrics(X_scaled, y)
+        # Data validation and cleaning
+        if X.isnull().any().any():
+            logger.warning("Training features contain NaN values. Filling with median values.")
+            X = X.fillna(X.median())
 
-        # Calculate validation metrics if validation data is provided
-        val_metrics = None
+        if y.isnull().any():
+            logger.warning("Training labels contain NaN values. Removing corresponding samples.")
+            valid_mask = ~y.isnull()
+            X = X[valid_mask]
+            y = y[valid_mask]
+
+        # Convert labels to string and standardize
+        y = y.astype(str).str.upper()
+        
+        # Check class distribution
+        class_counts = y.value_counts()
+        if len(class_counts) < 2:
+            raise ValueError(f"Training data must contain at least two different classes. Found only: {', '.join(class_counts.index)}")
+        
+        logger.info(f"Class distribution in training data: {class_counts.to_dict()}")
+        
+        # Check for extreme class imbalance
+        min_class_ratio = class_counts.min() / len(y)
+        if min_class_ratio < 0.1:  # Less than 10% of samples in minority class
+            logger.warning(f"Severe class imbalance detected. Minority class has only {min_class_ratio:.1%} of samples")
+
+        # Validate validation data if provided
         if X_val is not None and y_val is not None:
-            X_val_scaled = self.scaler.transform(X_val)
-            val_metrics = self._calculate_metrics(X_val_scaled, y_val)
+            if not isinstance(X_val, pd.DataFrame):
+                raise ValueError("Validation features (X_val) must be a pandas DataFrame")
+            if not isinstance(y_val, pd.Series):
+                raise ValueError("Validation labels (y_val) must be a pandas Series")
+            
+            if X_val.isnull().any().any():
+                logger.warning("Validation features contain NaN values. Filling with median values.")
+                X_val = X_val.fillna(X_val.median())
 
-        return {
-            'train': train_metrics,
-            'validation': val_metrics
-        }
+            if y_val.isnull().any():
+                logger.warning("Validation labels contain NaN values. Removing corresponding samples.")
+                valid_mask = ~y_val.isnull()
+                X_val = X_val[valid_mask]
+                y_val = y_val[valid_mask]
+
+            # Convert validation labels to string
+            y_val = y_val.astype(str).str.upper()
+
+        try:
+            # Scale features
+            X_scaled = self.scaler.fit_transform(X)
+            
+            # Train the model
+            self.model.fit(X_scaled, y)
+            self.is_trained = True
+
+            # Calculate training metrics
+            train_metrics = self._calculate_metrics(X_scaled, y)
+
+            # Calculate validation metrics if validation data is provided
+            val_metrics = None
+            if X_val is not None and y_val is not None:
+                X_val_scaled = self.scaler.transform(X_val)
+                val_metrics = self._calculate_metrics(X_val_scaled, y_val)
+
+            return {
+                'train': train_metrics,
+                'validation': val_metrics,
+                'data_info': {
+                    'training_samples': len(y),
+                    'validation_samples': len(y_val) if y_val is not None else 0,
+                    'feature_count': X.shape[1],
+                    'class_distribution': class_counts.to_dict()
+                }
+            }
+            
+        except Exception as e:
+            logger.error(f"Training failed: {str(e)}")
+            raise RuntimeError(f"Model training failed: {str(e)}")
 
     def predict(self, X: pd.DataFrame) -> np.ndarray:
         """

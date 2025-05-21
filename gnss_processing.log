@@ -1,0 +1,152 @@
+2025-05-21 19:32:34,757 - werkzeug - WARNING -  * Debugger is active!
+2025-05-21 19:32:34,760 - werkzeug - INFO -  * Debugger PIN: 230-922-999
+2025-05-21 19:33:23,694 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Admin\\Documents\\PNT_chall_3\\data_validator.py', reloading
+2025-05-21 19:33:28,974 - werkzeug - WARNING -  * Debugger is active!
+2025-05-21 19:33:28,979 - werkzeug - INFO -  * Debugger PIN: 230-922-999
+2025-05-21 19:38:16,834 - werkzeug - INFO - 127.0.0.1 - - [21/May/2025 19:38:16] "GET / HTTP/1.1" 200 -
+2025-05-21 19:38:21,529 - feature_extractor - INFO - Initialized GNSSFeatureExtractor with temp directory: C:\Users\Admin\AppData\Local\Temp\gnss_6a2pbj6f
+2025-05-21 19:38:21,535 - werkzeug - INFO - 127.0.0.1 - - [21/May/2025 19:38:21] "POST /api/initialize HTTP/1.1" 200 -
+2025-05-21 19:38:53,333 - feature_extractor - INFO - Loading file: train_1747836533306.xlsx
+2025-05-21 19:38:53,360 - feature_extractor - INFO - Created backup file: C:\Users\Admin\AppData\Local\Temp\gnss_6a2pbj6f\train_1747836533306_backup_20250521_193853.xlsx
+2025-05-21 19:38:57,023 - feature_extractor - INFO - Successfully loaded Excel file using openpyxl engine
+2025-05-21 19:38:57,234 - feature_extractor - INFO - Loading file: test_1747836537228.xlsx
+2025-05-21 19:38:57,240 - feature_extractor - INFO - Created backup file: C:\Users\Admin\AppData\Local\Temp\gnss_6a2pbj6f\test_1747836537228_backup_20250521_193857.xlsx
+2025-05-21 19:38:57,281 - feature_extractor - WARNING - Failed to convert using openpyxl engine: File is not a zip file
+2025-05-21 19:38:57,283 - feature_extractor - WARNING - Failed to convert using xlrd engine: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-21 19:38:57,285 - feature_extractor - WARNING - Failed to convert using odf engine: Missing optional dependency 'odfpy'.  Use pip or conda to install odfpy.
+2025-05-21 19:38:57,286 - feature_extractor - ERROR - Failed to convert Excel to CSV: All Excel engines failed
+2025-05-21 19:38:57,288 - feature_extractor - ERROR - Failed to load file with all available methods:
+openpyxl engine failed: File is not a zip file
+xlrd engine failed: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+odf engine failed: Missing optional dependency 'odfpy'.  Use pip or conda to install odfpy.
+CSV conversion failed: All Excel engines failed
+2025-05-21 19:38:57,289 - feature_extractor - ERROR - Error loading file: Failed to load file with all available methods:
+openpyxl engine failed: File is not a zip file
+xlrd engine failed: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+odf engine failed: Missing optional dependency 'odfpy'.  Use pip or conda to install odfpy.
+CSV conversion failed: All Excel engines failed
+2025-05-21 19:38:57,303 - werkzeug - INFO - 127.0.0.1 - - [21/May/2025 19:38:57] "[35m[1mPOST /api/train HTTP/1.1[0m" 500 -
+2025-05-21 19:41:47,288 - feature_extractor - INFO - Loading file: train_1747836707247.xlsx
+2025-05-21 19:41:47,298 - feature_extractor - INFO - Created backup file: C:\Users\Admin\AppData\Local\Temp\gnss_6a2pbj6f\train_1747836707247_backup_20250521_194147.xlsx
+2025-05-21 19:41:49,719 - feature_extractor - INFO - Successfully loaded Excel file using openpyxl engine
+2025-05-21 19:41:49,857 - feature_extractor - INFO - Loading file: test_1747836709849.xlsx
+2025-05-21 19:41:49,863 - feature_extractor - INFO - Created backup file: C:\Users\Admin\AppData\Local\Temp\gnss_6a2pbj6f\test_1747836709849_backup_20250521_194149.xlsx
+2025-05-21 19:41:49,913 - feature_extractor - WARNING - Failed to convert using openpyxl engine: File is not a zip file
+2025-05-21 19:41:49,915 - feature_extractor - WARNING - Failed to convert using xlrd engine: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+2025-05-21 19:41:49,917 - feature_extractor - WARNING - Failed to convert using odf engine: Missing optional dependency 'odfpy'.  Use pip or conda to install odfpy.
+2025-05-21 19:41:49,918 - feature_extractor - ERROR - Failed to convert Excel to CSV: All Excel engines failed
+2025-05-21 19:41:49,919 - feature_extractor - ERROR - Failed to load file with all available methods:
+openpyxl engine failed: File is not a zip file
+xlrd engine failed: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+odf engine failed: Missing optional dependency 'odfpy'.  Use pip or conda to install odfpy.
+CSV conversion failed: All Excel engines failed
+2025-05-21 19:41:49,920 - feature_extractor - ERROR - Error loading file: Failed to load file with all available methods:
+openpyxl engine failed: File is not a zip file
+xlrd engine failed: Missing optional dependency 'xlrd'. Install xlrd >= 2.0.1 for xls Excel support Use pip or conda to install xlrd.
+odf engine failed: Missing optional dependency 'odfpy'.  Use pip or conda to install odfpy.
+CSV conversion failed: All Excel engines failed
+2025-05-21 19:41:49,929 - werkzeug - INFO - 127.0.0.1 - - [21/May/2025 19:41:49] "[35m[1mPOST /api/train HTTP/1.1[0m" 500 -
+2025-05-21 19:44:03,192 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Admin\\Documents\\PNT_chall_3\\feature_extractor.py', reloading
+2025-05-21 19:44:10,309 - werkzeug - WARNING -  * Debugger is active!
+2025-05-21 19:44:10,323 - werkzeug - INFO -  * Debugger PIN: 230-922-999
+2025-05-21 19:47:50,804 - werkzeug - INFO - 127.0.0.1 - - [21/May/2025 19:47:50] "GET / HTTP/1.1" 200 -
+2025-05-21 19:48:07,839 - werkzeug - INFO - 127.0.0.1 - - [21/May/2025 19:48:07] "GET / HTTP/1.1" 200 -
+2025-05-21 19:48:15,883 - feature_extractor - INFO - Installing missing dependencies: ['xlrd>=2.0.1', 'odfpy>=1.4.1', 'pyxlsb>=1.0.9']
+2025-05-21 19:48:27,643 - feature_extractor - INFO - Successfully installed missing dependencies
+2025-05-21 19:48:27,645 - feature_extractor - INFO - Initialized GNSSFeatureExtractor with temp directory: C:\Users\Admin\AppData\Local\Temp\gnss_27aqxi3e
+2025-05-21 19:48:27,647 - werkzeug - INFO - 127.0.0.1 - - [21/May/2025 19:48:27] "POST /api/initialize HTTP/1.1" 200 -
+2025-05-21 19:49:19,696 - feature_extractor - INFO - Created backup at C:\Users\Admin\AppData\Local\Temp\gnss_27aqxi3e\train_1747837159664_backup_20250521_194919.xlsx
+2025-05-21 19:49:19,739 - feature_extractor - INFO - Detected file format: xlsx
+2025-05-21 19:49:22,712 - feature_extractor - INFO - Created backup at C:\Users\Admin\AppData\Local\Temp\gnss_27aqxi3e\test_1747837162698_backup_20250521_194922.xlsx
+2025-05-21 19:49:22,742 - feature_extractor - INFO - Detected file format: csv
+2025-05-21 19:49:22,980 - werkzeug - INFO - 127.0.0.1 - - [21/May/2025 19:49:22] "[35m[1mPOST /api/train HTTP/1.1[0m" 500 -
+2025-05-21 19:50:12,092 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Admin\\Documents\\PNT_chall_3\\classifier.py', reloading
+2025-05-21 19:50:17,010 - werkzeug - WARNING -  * Debugger is active!
+2025-05-21 19:50:17,015 - werkzeug - INFO -  * Debugger PIN: 230-922-999
+2025-05-21 19:50:51,888 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Admin\\Documents\\PNT_chall_3\\feature_extractor.py', reloading
+2025-05-21 19:50:54,936 - werkzeug - WARNING -  * Debugger is active!
+2025-05-21 19:50:54,941 - werkzeug - INFO -  * Debugger PIN: 230-922-999
+2025-05-21 19:51:29,805 - werkzeug - INFO - 127.0.0.1 - - [21/May/2025 19:51:29] "GET / HTTP/1.1" 200 -
+2025-05-21 19:51:35,561 - feature_extractor - INFO - Installing missing dependencies: ['odfpy>=1.4.1']
+2025-05-21 19:51:39,968 - feature_extractor - INFO - Successfully installed missing dependencies
+2025-05-21 19:51:39,969 - feature_extractor - INFO - Initialized GNSSFeatureExtractor with temp directory: C:\Users\Admin\AppData\Local\Temp\gnss_40u19ild
+2025-05-21 19:51:39,972 - werkzeug - INFO - 127.0.0.1 - - [21/May/2025 19:51:39] "POST /api/initialize HTTP/1.1" 200 -
+2025-05-21 19:52:24,715 - feature_extractor - INFO - Created backup at C:\Users\Admin\AppData\Local\Temp\gnss_40u19ild\train_1747837344670_backup_20250521_195224.xlsx
+2025-05-21 19:52:24,803 - feature_extractor - INFO - Detected file format: xlsx
+2025-05-21 19:52:28,209 - feature_extractor - WARNING - Removing 1 rows with unknown LOS/NLOS labels
+2025-05-21 19:52:28,409 - feature_extractor - INFO - Created backup at C:\Users\Admin\AppData\Local\Temp\gnss_40u19ild\test_1747837348387_backup_20250521_195228.xlsx
+2025-05-21 19:52:28,453 - feature_extractor - INFO - Detected file format: csv
+2025-05-21 19:52:28,559 - feature_extractor - WARNING - Removing 1 rows with unknown LOS/NLOS labels
+2025-05-21 19:52:28,731 - werkzeug - INFO - 127.0.0.1 - - [21/May/2025 19:52:28] "[35m[1mPOST /api/train HTTP/1.1[0m" 500 -
+2025-05-21 19:53:43,536 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Admin\\Documents\\PNT_chall_3\\feature_extractor.py', reloading
+2025-05-21 19:53:47,036 - werkzeug - WARNING -  * Debugger is active!
+2025-05-21 19:53:47,042 - werkzeug - INFO -  * Debugger PIN: 230-922-999
+2025-05-21 19:54:05,398 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Admin\\Documents\\PNT_chall_3\\feature_extractor.py', reloading
+2025-05-21 19:54:08,679 - werkzeug - WARNING -  * Debugger is active!
+2025-05-21 19:54:08,682 - werkzeug - INFO -  * Debugger PIN: 230-922-999
+2025-05-21 19:54:13,143 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Admin\\Documents\\PNT_chall_3\\feature_extractor.py', reloading
+2025-05-21 19:54:16,233 - werkzeug - WARNING -  * Debugger is active!
+2025-05-21 19:54:16,237 - werkzeug - INFO -  * Debugger PIN: 230-922-999
+2025-05-21 19:54:25,879 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Admin\\Documents\\PNT_chall_3\\feature_extractor.py', reloading
+2025-05-21 19:54:29,795 - werkzeug - WARNING -  * Debugger is active!
+2025-05-21 19:54:29,799 - werkzeug - INFO -  * Debugger PIN: 230-922-999
+2025-05-21 19:54:38,520 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Admin\\Documents\\PNT_chall_3\\app.py', reloading
+2025-05-21 19:54:41,407 - werkzeug - WARNING -  * Debugger is active!
+2025-05-21 19:54:41,412 - werkzeug - INFO -  * Debugger PIN: 230-922-999
+2025-05-21 19:55:01,844 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Admin\\Documents\\PNT_chall_3\\app.py', reloading
+2025-05-21 19:55:04,714 - werkzeug - WARNING -  * Debugger is active!
+2025-05-21 19:55:04,719 - werkzeug - INFO -  * Debugger PIN: 230-922-999
+2025-05-21 19:56:13,705 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Admin\\Documents\\PNT_chall_3\\feature_extractor.py', reloading
+2025-05-21 19:56:16,661 - werkzeug - WARNING -  * Debugger is active!
+2025-05-21 19:56:16,664 - werkzeug - INFO -  * Debugger PIN: 230-922-999
+2025-05-21 19:56:27,457 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Admin\\Documents\\PNT_chall_3\\feature_extractor.py', reloading
+2025-05-21 19:56:31,071 - werkzeug - WARNING -  * Debugger is active!
+2025-05-21 19:56:31,075 - werkzeug - INFO -  * Debugger PIN: 230-922-999
+2025-05-21 19:56:50,410 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Admin\\Documents\\PNT_chall_3\\classifier.py', reloading
+2025-05-21 19:56:53,687 - werkzeug - WARNING -  * Debugger is active!
+2025-05-21 19:56:53,692 - werkzeug - INFO -  * Debugger PIN: 230-922-999
+2025-05-21 19:57:18,361 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Admin\\Documents\\PNT_chall_3\\feature_extractor.py', reloading
+2025-05-21 19:57:21,630 - werkzeug - WARNING -  * Debugger is active!
+2025-05-21 19:57:21,635 - werkzeug - INFO -  * Debugger PIN: 230-922-999
+2025-05-21 19:57:23,897 - werkzeug - INFO -  * Detected change in 'C:\\Users\\Admin\\Documents\\PNT_chall_3\\feature_extractor.py', reloading
+2025-05-21 19:57:26,928 - werkzeug - WARNING -  * Debugger is active!
+2025-05-21 19:57:26,932 - werkzeug - INFO -  * Debugger PIN: 230-922-999
+2025-05-21 19:58:56,576 - werkzeug - INFO - 127.0.0.1 - - [21/May/2025 19:58:56] "GET / HTTP/1.1" 200 -
+2025-05-21 19:59:06,340 - feature_extractor - INFO - Installing missing dependencies: ['odfpy>=1.4.1']
+2025-05-21 19:59:11,155 - feature_extractor - INFO - Successfully installed missing dependencies
+2025-05-21 19:59:11,157 - feature_extractor - INFO - Initialized GNSSFeatureExtractor with temp directory: C:\Users\Admin\AppData\Local\Temp\gnss__95yf6u3
+2025-05-21 19:59:11,160 - werkzeug - INFO - 127.0.0.1 - - [21/May/2025 19:59:11] "POST /api/initialize HTTP/1.1" 200 -
+2025-05-21 19:59:40,485 - werkzeug - INFO - 127.0.0.1 - - [21/May/2025 19:59:40] "[31m[1mPOST /api/train HTTP/1.1[0m" 400 -
+2025-05-21 20:01:49,204 - werkzeug - INFO - 127.0.0.1 - - [21/May/2025 20:01:49] "GET / HTTP/1.1" 200 -
+2025-05-21 20:01:51,706 - werkzeug - INFO - 127.0.0.1 - - [21/May/2025 20:01:51] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-21 20:02:25,547 - feature_extractor - INFO - Installing missing dependencies: ['odfpy>=1.4.1']
+2025-05-21 20:02:30,952 - feature_extractor - INFO - Successfully installed missing dependencies
+2025-05-21 20:02:30,952 - feature_extractor - INFO - Initialized GNSSFeatureExtractor with temp directory: C:\Users\Admin\AppData\Local\Temp\gnss_k9t3e4_c
+2025-05-21 20:02:30,955 - feature_extractor - INFO - Cleaned up temporary directory: C:\Users\Admin\AppData\Local\Temp\gnss__95yf6u3
+2025-05-21 20:02:30,960 - werkzeug - INFO - 127.0.0.1 - - [21/May/2025 20:02:30] "POST /api/initialize HTTP/1.1" 200 -
+2025-05-21 20:02:34,160 - werkzeug - INFO - 127.0.0.1 - - [21/May/2025 20:02:34] "[31m[1mPOST /api/train HTTP/1.1[0m" 400 -
+2025-05-21 20:05:25,073 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-21 20:05:25,074 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-21 20:05:25,077 - werkzeug - INFO -  * Restarting with stat
+2025-05-21 20:05:27,782 - werkzeug - WARNING -  * Debugger is active!
+2025-05-21 20:05:27,791 - werkzeug - INFO -  * Debugger PIN: 813-957-040
+2025-05-21 20:07:08,655 - werkzeug - INFO - 127.0.0.1 - - [21/May/2025 20:07:08] "GET / HTTP/1.1" 200 -
+2025-05-21 20:07:14,882 - feature_extractor - INFO - Installing missing dependencies: ['odfpy>=1.4.1']
+2025-05-21 20:07:19,370 - feature_extractor - INFO - Successfully installed missing dependencies
+2025-05-21 20:07:19,372 - feature_extractor - INFO - Initialized GNSSFeatureExtractor with temp directory: C:\Users\Admin\AppData\Local\Temp\gnss_nxt8yfgw
+2025-05-21 20:07:19,376 - feature_extractor - INFO - Cleaned up temporary directory: C:\Users\Admin\AppData\Local\Temp\gnss_k9t3e4_c
+2025-05-21 20:07:19,377 - werkzeug - INFO - 127.0.0.1 - - [21/May/2025 20:07:19] "POST /api/initialize HTTP/1.1" 200 -
+2025-05-21 20:07:56,810 - werkzeug - INFO - 127.0.0.1 - - [21/May/2025 20:07:56] "[31m[1mPOST /api/train HTTP/1.1[0m" 400 -
+2025-05-21 20:09:54,889 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-05-21 20:09:54,890 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-05-21 20:09:54,892 - werkzeug - INFO -  * Restarting with stat
+2025-05-21 20:09:57,007 - werkzeug - WARNING -  * Debugger is active!
+2025-05-21 20:09:57,010 - werkzeug - INFO -  * Debugger PIN: 230-922-999
+2025-05-21 20:11:16,112 - werkzeug - INFO - 127.0.0.1 - - [21/May/2025 20:11:16] "GET / HTTP/1.1" 200 -
+2025-05-21 20:11:21,598 - feature_extractor - INFO - Installing missing dependencies: ['odfpy>=1.4.1']
+2025-05-21 20:11:26,296 - feature_extractor - INFO - Successfully installed missing dependencies
+2025-05-21 20:11:26,296 - feature_extractor - INFO - Initialized GNSSFeatureExtractor with temp directory: C:\Users\Admin\AppData\Local\Temp\gnss_tjzajxd7
+2025-05-21 20:11:26,297 - werkzeug - INFO - 127.0.0.1 - - [21/May/2025 20:11:26] "POST /api/initialize HTTP/1.1" 200 -
+2025-05-21 20:12:05,388 - werkzeug - INFO - 127.0.0.1 - - [21/May/2025 20:12:05] "[31m[1mPOST /api/train HTTP/1.1[0m" 400 -
