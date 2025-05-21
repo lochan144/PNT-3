@@ -9,12 +9,9 @@ from pathlib import Path
 import sys
 import os
 
-# Add parent directory to path to import from src
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-from data_processing.data_loader import GNSSDataLoader
-from feature_engineering.feature_extractor import GNSSFeatureExtractor
-from models.classifier import GNSSClassifier
+from data_loader import GNSSDataLoader
+from feature_extractor import GNSSFeatureExtractor
+from classifier import GNSSClassifier
 
 app = Flask(__name__)
 CORS(app)
@@ -34,7 +31,7 @@ def initialize():
     """Initialize the classification system with specified parameters."""
     try:
         data = request.get_json()
-        data_dir = data.get('data_dir', 'data')
+        data_dir = data.get('data_dir', '.')  # Use current directory as default
         model_type = data.get('model_type', 'rf')
         model_params = data.get('model_params', {})
 
@@ -51,26 +48,44 @@ def initialize():
 def train():
     """Train the classifier on provided data."""
     try:
-        data = request.get_json()
-        train_file = data.get('train_file')
-        val_file = data.get('val_file')
+        # Check if files were uploaded
+        if 'train_file' not in request.files:
+            return jsonify({'status': 'error', 'message': 'No training file provided'}), 400
+        
+        train_file = request.files['train_file']
+        test_file = request.files.get('test_file')
 
-        # Load and preprocess training data
-        train_data = data_loader.load_data(train_file)
-        train_data = data_loader.preprocess_data(train_data)
-        X_train = feature_extractor.extract_features(train_data)
-        y_train = train_data['LOS/NLOS']
+        # Save uploaded files temporarily
+        train_path = Path('temp_train.xlsx')
+        train_file.save(train_path)
 
-        # Load and preprocess validation data if provided
-        X_val, y_val = None, None
-        if val_file:
-            val_data = data_loader.load_data(val_file)
-            val_data = data_loader.preprocess_data(val_data)
-            X_val = feature_extractor.extract_features(val_data)
-            y_val = val_data['LOS/NLOS']
+        # Extract features from training data
+        train_features = feature_extractor.extract_features_from_excel(train_path)
+        if 'LOS/NLOS' not in train_features.columns:
+            return jsonify({'status': 'error', 'message': 'Training data must contain LOS/NLOS labels'}), 400
+
+        X_train = train_features.drop('LOS/NLOS', axis=1)
+        y_train = train_features['LOS/NLOS']
+
+        # Handle test file if provided
+        X_test, y_test = None, None
+        if test_file:
+            test_path = Path('temp_test.xlsx')
+            test_file.save(test_path)
+            test_features = feature_extractor.extract_features_from_excel(test_path)
+            
+            if 'LOS/NLOS' in test_features.columns:
+                X_test = test_features.drop('LOS/NLOS', axis=1)
+                y_test = test_features['LOS/NLOS']
+            
+            # Clean up test file
+            test_path.unlink(missing_ok=True)
 
         # Train the model
-        metrics = classifier.train(X_train, y_train, X_val, y_val)
+        metrics = classifier.train(X_train, y_train, X_test, y_test)
+
+        # Clean up training file
+        train_path.unlink(missing_ok=True)
 
         return jsonify({
             'status': 'success',
@@ -84,22 +99,28 @@ def train():
 def predict():
     """Make predictions on new data."""
     try:
-        data = request.get_json()
-        test_file = data.get('test_file')
+        if 'test_file' not in request.files:
+            return jsonify({'status': 'error', 'message': 'No test file provided'}), 400
 
-        # Load and preprocess test data
-        test_data = data_loader.load_data(test_file)
-        test_data = data_loader.preprocess_data(test_data)
-        X_test = feature_extractor.extract_features(test_data)
+        test_file = request.files['test_file']
+        test_path = Path('temp_test.xlsx')
+        test_file.save(test_path)
+
+        # Extract features from test data
+        test_features = feature_extractor.extract_features_from_excel(test_path)
+        X_test = test_features.drop('LOS/NLOS', axis=1) if 'LOS/NLOS' in test_features.columns else test_features
 
         # Make predictions
         predictions = classifier.predict(X_test)
         probabilities = classifier.predict_proba(X_test)
 
-        # If ground truth is available, calculate metrics
+        # Calculate metrics if ground truth is available
         metrics = None
-        if 'LOS/NLOS' in test_data.columns:
-            metrics = classifier.evaluate(X_test, test_data['LOS/NLOS'])
+        if 'LOS/NLOS' in test_features.columns:
+            metrics = classifier.evaluate(X_test, test_features['LOS/NLOS'])
+
+        # Clean up
+        test_path.unlink(missing_ok=True)
 
         return jsonify({
             'status': 'success',
@@ -114,16 +135,16 @@ def predict():
 def feature_importance():
     """Get feature importance scores."""
     try:
-        if classifier.model_type != 'rf':
+        if not classifier or not classifier.is_trained:
             return jsonify({
                 'status': 'error',
-                'message': 'Feature importance is only available for Random Forest models'
+                'message': 'Model must be trained before getting feature importance'
             }), 400
 
         importance_scores = classifier.get_feature_importance()
         feature_names = feature_extractor.get_feature_names()
         
-        importance_dict = dict(zip(feature_names, importance_scores.values()))
+        importance_dict = dict(zip(feature_names, importance_scores['importance']))
         sorted_importance = dict(
             sorted(importance_dict.items(), key=lambda x: x[1], reverse=True)
         )
